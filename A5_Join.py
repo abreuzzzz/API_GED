@@ -17,9 +17,9 @@ client = gspread.authorize(creds)
 
 # === IDs das planilhas ===
 planilhas_ids = {
-    "Financeiro_contas_a_receber_Bluefields": "1IkG2bG2qwfUPIRwE-igQ-gbsH5B3vmlH_ButiOoorAM",
-    "Financeiro_contas_a_pagar_Bluefields": "1As4IarqpWofUxl6g4X0TRuBMIgP-uJEFkWDIqqFcZBY",
-    "Financeiro_Completo_Bluefields": "1sBKeD9Bgwy59xAJzetF1gVDShrnCocQnuYB2CRtutPk"
+    "Financeiro_contas_a_receber_GED": "1T4IDEDVLvOP1YfRnq_Fp-FKk4x6-dQhCZ3rAHDdZ300",
+    "Financeiro_contas_a_pagar_GED": "1aCnWvM6T1kGslwDM_HXTpD26B_ywT5WQxdLiluLfv0E",
+    "Financeiro_Completo_GED": "1EjCEgVLn5spxEnPngzUigdCKhIVcn_1SnP0V6IBJNGo"
 }
 
 # === Função para abrir e ler planilha por ID ===
@@ -31,8 +31,8 @@ def ler_planilha_por_id(nome_arquivo):
 
 # Lê os dados das planilhas principais
 print("📥 Lendo planilhas de contas a receber e contas a pagar...")
-df_receber = ler_planilha_por_id("Financeiro_contas_a_receber_Bluefields")
-df_pagar = ler_planilha_por_id("Financeiro_contas_a_pagar_Bluefields")
+df_receber = ler_planilha_por_id("Financeiro_contas_a_receber_GED")
+df_pagar = ler_planilha_por_id("Financeiro_contas_a_pagar_GED")
 
 # Adiciona a coluna tipo
 df_receber["tipo"] = "Receita"
@@ -151,7 +151,7 @@ if 'Centro de Custo 1' in df_completo.columns:
 
 # 📄 Abrir a planilha de saída e escrever UMA ÚNICA VEZ
 print("\n📤 Atualizando planilha consolidada...")
-planilha_saida = client.open_by_key(planilhas_ids["Financeiro_Completo_Bluefields"])
+planilha_saida = client.open_by_key(planilhas_ids["Financeiro_Completo_GED"])
 aba_saida = planilha_saida.sheet1
 
 # Limpa a aba e sobrescreve
